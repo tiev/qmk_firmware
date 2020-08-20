@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
  * |      |      |   7  |   8  |   9  |   ,  |-------|    |-------|   +  |   -  |   *  |   /  |   =  |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |LCTRL | LAlt |LOWER | /Space  /       \Enter \  |RAISE |BackSP| RGUI |
+ *                   |LCTRL | LAlt |LOWER | /Space  /       \Enter \  |RAISE |Delete| RGUI |
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, KC_LPRN, KC_1,    KC_2,    KC_3,    KC_RPRN,                   KC_PSCR, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
   _______, KC_0,    KC_4,    KC_5,    KC_6,    KC_DOT,                    XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, \
   _______, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_COMM, _______, _______, KC_PLUS, KC_MINS, KC_PAST, KC_SLSH, KC_EQL, _______, \
-                             _______, _______, _______, _______, _______, _______, _______, _______ \
+                             _______, _______, _______, _______, _______, _______, KC_DEL,  _______ \
 ),
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
