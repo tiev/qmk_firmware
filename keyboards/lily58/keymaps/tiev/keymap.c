@@ -76,11 +76,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |Sleep |BriDn |BriUp | Prev | |>|| | Next |                    | Mute |VolDn |VolUp |      |      |PwrDn |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   (  |   1  |   2  |   3  |   )  |                    | PScr | Home | PgDn | PgUp | End  |Insert|
+ * |      |   (  |   7  |   8  |   9  |   )  |                    | PScr | Home | PgDn | PgUp | End  |Insert|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   0  |   4  |   5  |   6  |   .  |-------.    ,-------|      | Left | Down |  Up  |Right |      |
+ * |      |      |   4  |   5  |   6  |   .  |-------.    ,-------|      | Left | Down |  Up  |Right |      |
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
- * |      |      |   7  |   8  |   9  |   ,  |-------|    |-------|   +  |   -  |   *  |   /  |   =  |      |
+ * |      |   0  |   1  |   2  |   3  |   ,  |-------|    |-------|   +  |   -  |   *  |   /  |   =  |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   |LCTRL | LAlt |LOWER | /Space  /       \Enter \  |RAISE |Delete| RGUI |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -88,9 +88,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT( \
   KC_SLEP, KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT,                   KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX, KC_PWR, \
-  _______, KC_LPRN, KC_1,    KC_2,    KC_3,    KC_RPRN,                   KC_PSCR, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
-  _______, KC_0,    KC_4,    KC_5,    KC_6,    KC_DOT,                    XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, \
-  _______, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_COMM, _______, _______, KC_PLUS, KC_MINS, KC_PAST, KC_SLSH, KC_EQL, _______, \
+  _______, KC_LPRN, KC_7,    KC_8,    KC_9,    KC_RPRN,                   KC_PSCR, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
+  _______, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_DOT,                    XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, \
+  _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_COMM, _______, _______, KC_PLUS, KC_MINS, KC_PAST, KC_SLSH, KC_EQL, _______, \
                              _______, _______, _______, _______, _______, _______, KC_DEL,  _______ \
 ),
 /* ADJUST
