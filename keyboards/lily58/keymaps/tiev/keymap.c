@@ -18,7 +18,7 @@ extern uint8_t is_master;
 #define _DVORAK 0
 #define _LOWER 1
 #define _RAISE 2
-#define _ADJUST 3
+#define _WORKMAN 3
 
 enum custom_keycodes {
   DVORAK = SAFE_RANGE,
@@ -29,6 +29,28 @@ enum custom_keycodes {
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
+/* WORKMAN
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * |  \   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  =   |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | Tab  |   Q  |   D  |   R  |   W  |   B  |                    |   J  |   F  |   U  |   P  |   ;  |  -   |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | ESC  |   A  |   S  |   H  |   T  |   G  |-------.    ,-------|   Y  |   N  |   E  |   O  |   I  |  '   |
+ * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
+ * |LShift|   Z  |   X  |   M  |   C  |   V  |-------|    |-------|   K  |   L  |   ,  |   .  |   /  |RShift|
+ * `-----------------------------------------/       /     \      \-----------------------------------------'
+ *                   |LCTRL | LAlt |LOWER | /Space  /       \Enter \  |RAISE |BackSP| RGUI |
+ *                   |      |      |      |/       /         \      \ |      |      |      |
+ *                   `----------------------------'           '------''--------------------'
+ */
+[_WORKMAN] = LAYOUT( \
+  KC_BSLS, KC_1, KC_2, KC_3, KC_4, KC_5,                   KC_6, KC_7, KC_8,    KC_9,   KC_0,    KC_EQL,  \
+  KC_TAB,  KC_Q, KC_D, KC_R, KC_W, KC_B,                   KC_J, KC_F, KC_U,    KC_P,   KC_SCLN, KC_MINS, \
+  KC_ESC,  KC_A, KC_S, KC_H, KC_T, KC_G,                   KC_Y, KC_N, KC_E,    KC_O,   KC_I,    KC_QUOT, \
+  KC_LSFT, KC_Z, KC_X, KC_M, KC_C, KC_V, KC_LBRC, KC_RBRC, KC_K, KC_L, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, \
+                KC_LCTRL, KC_LALT, LOWER, KC_SPC, KC_ENT, RAISE, KC_BSPC, KC_LGUI \
+),
 
 /* DVORAK
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -51,6 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LSFT, KC_SCLN, KC_Q,    KC_J,   KC_K, KC_X, KC_LBRC, KC_RBRC, KC_B, KC_M,   KC_W,   KC_V, KC_Z, KC_RSFT, \
                      KC_LCTRL, KC_LALT, LOWER, KC_SPC,       KC_ENT, RAISE, KC_BSPC, KC_LGUI \
 ),
+
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
@@ -72,6 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   S(KC_GRV), KC_APP,  C(KC_X), C(KC_C), KC_PSTE, C(KC_J), _______, _______, XXXXXXX, KC_PIPE, KC_PLUS, KC_LCBR, KC_RCBR, _______, \
                                _______, _______, _______, _______, _______, _______, _______, _______\
 ),
+
 /* RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |Sleep |BriDn |BriUp | Prev | |>|| | Next |                    | Mute |VolDn |VolUp |      |      |PwrDn |
@@ -93,30 +117,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_COMM, _______, _______, KC_PLUS, KC_MINS, KC_PAST, KC_SLSH, KC_EQL, _______, \
                              _______, _______, _______, _______, _______, _______, KC_DEL,  _______ \
 ),
-/* ADJUST
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------.    ,-------|      |      |RGB ON| HUE+ | SAT+ | VAL+ |
- * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|      |      | MODE | HUE- | SAT- | VAL- |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |LCTRL | LAlt |LOWER | /Space  /       \Enter \  |RAISE |BackSP| RGUI |
- *                   |      |      |      |/       /         \      \ |      |      |      |
- *                   `----------------------------'           '------''--------------------'
- */
-  [_ADJUST] = LAYOUT( \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD,\
-                             _______, _______, _______, _______, _______, _______, _______, _______ \
-  )
-};
 
 int RGB_current_mode;
+int current_layout = 0;
 
 // Setting ADJUST layer RGB back to default
 void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
@@ -181,6 +184,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DVORAK:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_DVORAK);
+        current_layout = 0;
       }
       return false;
       break;
