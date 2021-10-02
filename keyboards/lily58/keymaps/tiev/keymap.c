@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include <stdio.h>
 
 enum layer_number {
   _DVORAK = 0,
@@ -108,6 +109,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*   return update_tri_layer_state(state, _LOWER, _RAISE, _WORKMAN); */
 /* } */
 
+// Custom layer state names
+#define LAYR_DVORAK 0
+#define LAYR_WORKMAN (1 << 1)
+#define LAYR_DLOWER (1 << 2)
+#define LAYR_DRAISE (1 << 3)
+#define LAYR_WLOWER (1 << 2) + 2
+#define LAYR_WRAISE (1 << 3) + 2
+
+char layer_state_str[24];
+
+const char *read_layer_state(void) {
+  switch (layer_state) {
+    case LAYR_DVORAK:
+      snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Dvorak");
+      break;
+    case LAYR_WORKMAN:
+      snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Workman");
+      break;
+    case LAYR_DLOWER:
+    case LAYR_WLOWER:
+      snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Lower");
+      break;
+    case LAYR_DRAISE:
+    case LAYR_WRAISE:
+      snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Raise");
+      break;
+    default:
+      snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Undef-%ld", layer_state);
+  }
+
+  return layer_state_str;
+}
+
 //SSD1306 OLED update loop, make sure to enable OLED_ENABLE=yes in rules.mk
 #ifdef OLED_ENABLE
 
@@ -118,7 +152,7 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 // When you add source files to SRC in rules.mk, you can use functions.
-const char *read_layer_state(void);
+/* const char *read_layer_state(void); */
 const char *read_logo(void);
 void set_keylog(uint16_t keycode, keyrecord_t *record);
 const char *read_keylog(void);
