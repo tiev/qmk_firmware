@@ -3,7 +3,7 @@
 
 enum layer_number {
   _DVORAK = 0,
-  _WORKMAN,
+  _COLEMAKDH,
   _LOWER,
   _RAISE,
 };
@@ -38,25 +38,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   KC_LCTRL, KC_LALT, MO(_LOWER), KC_SPC,  KC_RCTRL, MO(_RAISE), KC_BSPC, KC_LGUI              \
 ),
 
-/* WORKMAN
+/* COLEMAK Mod-DH
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |  \   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  =   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  |   Q  |   D  |   R  |   W  |   B  |                    |   J  |   F  |   U  |   P  |   ;  |  -   |
+ * | Tab  |   Q  |   W  |   F  |   P  |   B  |                    |   J  |   L  |   U  |   Y  |   ;  |  -   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | ESC  |   A  |   S  |   H  |   T  |   G  |-------.    ,-------|   Y  |   N  |   E  |   O  |   I  |Enter |
+ * | ESC  |   A  |   R  |   S  |   T  |   G  |-------.    ,-------|   M  |   N  |   E  |   I  |   O  |Enter |
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
- * |LShift|   Z  |   X  |   M  |   C  |   V  |-------|    |-------|   K  |   L  |   ,  |   .  |   /  |  '   |
+ * |LShift|   Z  |   X  |   C  |   D  |   V  |-------|    |-------|   K  |   H  |   ,  |   .  |   /  |  '   |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   |LCTRL | LAlt |LOWER | /Space  /       \RCTRL \  |RAISE |BackSP| RGUI |
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
-[_WORKMAN] = LAYOUT( \
+[_COLEMAKDH] = LAYOUT( \
   KC_BSLS, KC_1, KC_2, KC_3, KC_4, KC_5,                   KC_6, KC_7, KC_8,    KC_9,   KC_0,    KC_EQL,  \
-  KC_TAB,  KC_Q, KC_D, KC_R, KC_W, KC_B,                   KC_J, KC_F, KC_U,    KC_P,   KC_SCLN, KC_MINS, \
-  KC_ESC,  KC_A, KC_S, KC_H, KC_T, KC_G,                   KC_Y, KC_N, KC_E,    KC_O,   KC_I,    KC_ENT,  \
-  KC_LSFT, KC_Z, KC_X, KC_M, KC_C, KC_V, KC_LBRC, KC_RBRC, KC_K, KC_L, KC_COMM, KC_DOT, KC_SLSH, KC_QUOT, \
+  KC_TAB,  KC_Q, KC_W, KC_F, KC_P, KC_B,                   KC_J, KC_L, KC_U,    KC_Y,   KC_SCLN, KC_MINS, \
+  KC_ESC,  KC_A, KC_R, KC_S, KC_T, KC_G,                   KC_M, KC_N, KC_E,    KC_I,   KC_O,    KC_ENT,  \
+  KC_LSFT, KC_Z, KC_X, KC_C, KC_D, KC_V, KC_LBRC, KC_RBRC, KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH, KC_QUOT, \
           KC_LCTRL, KC_LALT, MO(_LOWER), KC_SPC,  KC_RCTRL, MO(_RAISE), KC_BSPC, KC_LGUI                  \
 ),
 
@@ -106,12 +106,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 /* layer_state_t layer_state_set_user(layer_state_t state) { */
-/*   return update_tri_layer_state(state, _LOWER, _RAISE, _WORKMAN); */
+/*   return update_tri_layer_state(state, _LOWER, _RAISE, _COLEMAKDH); */
 /* } */
 
 // Custom layer state names
 #define LAYR_DVORAK 0
-#define LAYR_WORKMAN (1 << 1)
+#define LAYR_COLEMAKDH (1 << 1)
 #define LAYR_DLOWER (1 << 2)
 #define LAYR_DRAISE (1 << 3)
 #define LAYR_WLOWER (1 << 2) + 2
@@ -124,8 +124,8 @@ const char *read_layer_state(void) {
     case LAYR_DVORAK:
       snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Dvorak");
       break;
-    case LAYR_WORKMAN:
-      snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Workman");
+    case LAYR_COLEMAKDH:
+      snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Colemak Mod-DH");
       break;
     case LAYR_DLOWER:
     case LAYR_WLOWER:
@@ -190,13 +190,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DVORAK:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_DVORAK);
-        layer_off(_WORKMAN);
+        layer_off(_COLEMAKDH);
       }
       return false;
       break;
     case TGLAYOUT:
       if (record->event.pressed) {
-        layer_invert(_WORKMAN);
+        layer_invert(_COLEMAKDH);
       }
       return false;
       break;
