@@ -7,7 +7,8 @@ enum custom_keycodes {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case TALKIE:
-      SEND_STRING(SS_TAP(X_F20));
+      // SEND_STRING(SS_TAP(X_F20)); // Ubuntu
+      SEND_STRING(SS_LGUI(SS_LSFT("a"))); // Windows
       return false;
     default:
       return true;
@@ -20,9 +21,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                _______, _______, KC_AUDIO_VOL_DOWN,
                LT(1, KC_MEDIA_PLAY_PAUSE), LT(2, KC_F13), KC_AUDIO_MUTE),
 
-  [1] = LAYOUT(KC_F20, _______, KC_F14,
-               _______, _______, KC_F15,
-               KC_TRNS, _______, KC_F16),
+  // Ubuntu
+  // [1] = LAYOUT(KC_F20, _______, KC_F14,
+  //              _______, _______, KC_F15,
+  //              KC_TRNS, _______, KC_F16),
+
+  [1] = LAYOUT(LSG(KC_A), _______, KC_CALCULATOR,
+               LSG(KC_O), KC_MEDIA_REWIND, KC_MEDIA_FAST_FORWARD,
+               KC_TRNS, KC_MEDIA_PREV_TRACK, KC_MEDIA_NEXT_TRACK),
 
   [2] = LAYOUT(RGB_RMOD, RGB_VAI, RGB_MOD,
                RGB_HUI, RGB_VAD, RGB_SAI,
