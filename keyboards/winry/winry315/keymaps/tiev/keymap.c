@@ -24,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_P7,   KC_P8,    KC_P9,          
         KC_P4,   KC_P5,    KC_P6,     KC_MUTE,
         KC_P1,   KC_P2,    KC_P3,          
-        LT(_LAYERS, LSG(KC_A)), LSG(KC_O), TALKIE, KC_HOME
+        MO(_LAYERS), LSG(KC_A), TALKIE, KC_HOME
     ),
 
     /* Numpad */
@@ -63,6 +63,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     )
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case TALKIE:
+      SEND_STRING(SS_LGUI(SS_LSFT("a"))); // Windows with PowerToys installed
+      return false;
+    default:
+      return true;
+  };
+};
+
 // clang-format on
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
