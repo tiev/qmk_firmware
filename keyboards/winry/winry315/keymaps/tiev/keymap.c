@@ -116,9 +116,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
             } else if (layer == _ETS) {
                 if (clockwise) {
-                    tap_code_delay(KC_PAST, 5);
+                    tap_code(KC_PAST);
                 } else {
-                    tap_code_delay(KC_PSLS, 5);
+                    tap_code(KC_PSLS);
                 }
             } else {
                 tap_code(clockwise ? KC_PGDN : KC_PGUP);
