@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_F5,    KC_F6,      KC_F7,
         KC_L,     KC_P,       KC_F1,       KC_F9,
         KC_E,     KC_SPACE,   KC_SCRL,
-        LT(_LAYERS, KC_1),  KC_2,  KC_3,   KC_F2
+        LT(_LAYERS, KC_1),  KC_2,  KC_3,   KC_T
     ),
 
     /* RGB configuration */
