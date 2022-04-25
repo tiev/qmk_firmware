@@ -24,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_P7,   KC_P8,    KC_P9,          
         KC_P4,   KC_P5,    KC_P6,     KC_MUTE,
         KC_P1,   KC_P2,    KC_P3,          
-        MO(_LAYERS), LSG(KC_A), TALKIE, KC_HOME
+        LT(_LAYERS, KC_P0), LSG(KC_A), TALKIE, KC_HOME
     ),
 
     /* Numpad */
@@ -116,9 +116,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
             } else if (layer == _ETS) {
                 if (clockwise) {
-                    tap_code(KC_PAST);
+                    tap_code_delay(KC_PAST, 1);
                 } else {
-                    tap_code(KC_PSLS);
+                    tap_code_delay(KC_PSLS, 1);
                 }
             } else {
                 tap_code(clockwise ? KC_PGDN : KC_PGUP);
